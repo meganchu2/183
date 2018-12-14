@@ -64,7 +64,7 @@ Hi-C data is analyzed and visualized in the following steps:
 ![Untitled2940c6daf03d9f546.png](https://www.pastepic.xyz/images/2018/12/14/Untitled2940c6daf03d9f546.png)
 <sub>Figure 3: Notice that at DNA regions around a distance of 100K (upstream and downstream) from a transcription start site have more contacts with that transcription start site, and DNA regions around a distance of 200K (upstream and downstream) from a CTCF binding site have more contacts with that CTCF binding site. [4]</sub>
 
-The **learned correction parameters** are determined using an explicit-factor model from Yaffe and Tanay, and they will normalize the technical biases while trying to avoid normalizing the biological biases.
+The **learned correction parameters** are determined using an explicit-factor model from Yaffe and Tanay, and they will normalize the technical biases without normalizing the biological biases.
 
 Our mapped read pairs can be organized in a format called the contact matrix.
 
@@ -75,12 +75,12 @@ Our mapped read pairs can be organized in a format called the contact matrix.
 - Observed contact matrix O[i,j]: observed read count between loci identified by bins i and j.
 - Correction matrix C[i,j]: sum of corrections for read pairs between bins i and j.
 - Normalized contact matrix N[i,j]: corrected/normalized contact counts calculated by 
-<center>N[i,j] = O[i,j] / C[i,j]</center>
+<p align="center">N[i,j] = O[i,j] / C[i,j]</p>
 
 **Other relevant contact matrices** [3]
 - Expected contact matrix E[i,j]: expected read counts between loci identified by bins i and j (calculated by considering correction parameters and the linear distance between read pairs)
 - Observed over Expected contact matrix O_over_E[i,j]: calculated by dividing the observed read counts by the expected read counts;
-<center>O_over_E[i,j] = O[i,j]/E[i,j]</center>
+<p align="center">O_over_E[i,j] = O[i,j] / E[i,j]</p>
 
 
 ## Data Visualization<a name="4"></a> 
@@ -98,7 +98,7 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 <table>
   <tr>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled51f762f1893d848d8.png" "heatmap+histograms" width="800")></td>
-    <td><sub>Figure 5: Example of heatmap and histogram visualizations for the Normalized and Observed over Expected contact matrices.  Notice that the diagonals in the heatmaps have 0 contacts because it represents interactions of any DNA fragment with itself, and we made sure to remove any reads that suggested this in the data pre-processiong step. [5]</sub></td>
+    <td><sub>Figure 5: Example of heatmap and histogram visualizations for the Normalized and Observed over Expected contact matrices.  Notice that the diagonals in the heatmaps have 0 contacts because it represents interactions of any DNA fragment with itself, and we made sure to remove any reads that suggested this in the data pre-processing step. [5]</sub></td>
   </tr>
 </table>
 <!---
@@ -112,20 +112,21 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
     <td>
 **Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).
 
+
 *What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]
 
 Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.
 
-**How to calculate the TAD coordinates:**
+**How to calculate TAD coordinates**
 1. Calculate the Directionality Index (DI)
   - quantifies degree of upstream or downstream bias of a given bin
-  - DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="400"/>
+  - DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="200"/>
 2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).
 3. Determine TAD Coordinates
   - Shifts in true DI between negative and positive determines the TAD boundaries
   - The TAD boundaries give us the TAD Coordinates
 </td>
-    <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6:</sub></td>
+    <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
   </tr>
 </table>
 
