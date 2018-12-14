@@ -126,7 +126,7 @@ Looking at Figure 6 we see at the very top that the chromatin is bunched up into
   - Shifts in true DI between negative and positive determines the TAD boundaries
   - The TAD boundaries give us the TAD Coordinates
 </td>
-    <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
+    <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
   </tr>
 </table>
 
