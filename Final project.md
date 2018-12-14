@@ -28,6 +28,8 @@ In order to analyze and visualize data generated from Hi-C, the following steps 
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled04d01bad2783e292.png" "Hi-C fragment"" width="1000"/></td>
     <td><sub>Figure 1. Schematic of two interacting DNA fragments (called DNA fragment 1 and DNA fragment 2) from the Hi-C protocol. **CHANGE THIS!!Figure by Sotelo-Silveira, Mariana, et al. Trends in Plant Science (2018).**</sub></td>
   </tr>
+</table>
+<table>
   <tr>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled3d84a95c29cb5ccd2.png" "ligation site"" width="1000"/></td>
     <td><sub>Figure 2. Schematic of reads generated from interacting DNA fragments from Figure 1 **borrowed from slides**</sub></td>
@@ -88,7 +90,12 @@ Our mapped read pairs can be organized in a format called the contact matrix.
 - Heatmaps show contacts based on data from contact matrices
 - Histograms show distribution of contact frequency
 
-A heatmap and a histogram can be plotted 
+Heatmaps and histograms are generated for the observed, expected, normalized, and observed over expected contact matrices. Matplotlib is used so that we can customize the following parameters:
+- plotting the full matrix or selecting only a portion
+- plotting the full range of the data or using a cut-off for contact counts to enhance local chromatin structures
+- colormap
+- adding labels and chromosomal coordinates to the heatmaps
+
 
 <table>
   <tr>
@@ -104,7 +111,21 @@ A heatmap and a histogram can be plotted
 ## TAD Analysis and Visualization<a name="5"></a> 
 <table>
   <tr>
-    <td>**Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).</td>
+    <td>**Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).
+
+*What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions.
+
+Looking at Figure 6 we see that 
+
+**How to calculate the coordinates:**
+1. Calculate the Directionality Index (DI)
+  - quantifies degree of upstream or downstream bias of a given bin
+  - ![Untitled70cc6753d2bf21933.png](http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png width="400")
+2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).
+3. Determine TAD Coordinates
+  - Shifts in true DI between negative and positive determines the TAD boundaries
+  - The TAD boundaries give us the TAD Coordinates
+</td>
     <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="600"/><sub>Figure 6:</sub></td>
   </tr>
 </table>
@@ -114,14 +135,13 @@ A heatmap and a histogram can be plotted
 -->
 
 # Reference
-[1] Erez Lieberman-Aiden et al. “Comprehensive mapping of long-range interactions reveals
-folding principles of the human genome”. In: science 326.5950 (2009), pp. 289–293
+[1] Ay F, Noble WS. Analysis methods for studying the 3D architecture of the genome. Genome Biol 2015;16:183.
 
-[2] Yaffe E, Tanay A. Probabilistic modeling of Hi-C contact maps eliminates systematic biases to characterize global chromosomal architecture. Nat. Genet. 2011;43:1059–1065.
+[2] Dixon, Jesse R., et al. “Topological domains in mammalian genomes identified by analysis of chromatin interactions.” Nature 485.7398 (2012): 376-380 
 
-[3] Ay F, Noble WS. Analysis methods for studying the 3D architecture of the genome. Genome Biol 2015;16:183.
+[3] Erez Lieberman-Aiden et al. “Comprehensive mapping of long-range interactions reveals folding principles of the human genome”. In: science 326.5950 (2009), pp. 289– 293 
 
-[4] Erez Lieberman-Aiden et al. “Comprehensive mapping of long-range interactions reveals folding principles of the human genome”. In: science 326.5950 (2009), pp. 289– 293 
+[4] Yaffe E, Tanay A. Probabilistic modeling of Hi-C contact maps eliminates systematic biases to characterize global chromosomal architecture. Nat. Genet. 2011;43:1059–1065.
 
 [5] Riccardo Calandrelli's slides: [https://drive.google.com/file/d/1nxP13mOIer_6yiLi7OFXHbQ4-D3Eqq4k/view](https://drive.google.com/file/d/1nxP13mOIer_6yiLi7OFXHbQ4-D3Eqq4k/view)
 
