@@ -75,12 +75,12 @@ Our mapped read pairs can be organized in a format called the contact matrix.
 - Observed contact matrix O[i,j]: observed read count between loci identified by bins i and j.
 - Correction matrix C[i,j]: sum of corrections for read pairs between bins i and j.
 - Normalized contact matrix N[i,j]: corrected/normalized contact counts calculated by 
-<p align="center">### N[i,j] = O[i,j] / C[i,j]</p>
+<p align="center">N[i,j] = O[i,j] / C[i,j]</p>
 
 **Other relevant contact matrices** [3]
 - Expected contact matrix E[i,j]: expected read counts between loci identified by bins i and j (calculated by considering correction parameters and the linear distance between read pairs)
 - Observed over Expected contact matrix O_over_E[i,j]: calculated by dividing the observed read counts by the expected read counts;
-<p align="center">### O_over_E[i,j] = O[i,j] / E[i,j]</p>
+<p align="center">O_over_E[i,j] = O[i,j] / E[i,j]</p>
 
 
 ## Data Visualization<a name="4"></a> 
@@ -109,9 +109,8 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 ## TAD Analysis and Visualization<a name="5"></a> 
 <table>
   <tr>
-    <td>
+    <td>.
 **Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).
-
 
 *What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]
 
