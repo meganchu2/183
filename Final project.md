@@ -64,14 +64,14 @@ In order to analyze and visualize data generated from Hi-C, the following steps 
 *What are biological biases?* A biological bias is due to genomic features such as transcription start sites (TSSs) and CTCF binding sites.  This bias is evident in the figure below.  
 
 ![Untitled2940c6daf03d9f546.png](https://www.pastepic.xyz/images/2018/12/14/Untitled2940c6daf03d9f546.png)
-<sub>Figure *: Notice that at DNA regions at around a distance of 100K (upstream and downstream) from a transcription start site have more contacts(interactions/read pairs) with that transcription start site, and DNA regions at around a distance of 200K (upstream and downstream) from a CTCF binding site have more contacts (interactions/read pairs) with that CTCF binding site.</sub>
+<sub>Figure 3: Notice that at DNA regions at around a distance of 100K (upstream and downstream) from a transcription start site have more contacts(interactions/read pairs) with that transcription start site, and DNA regions at around a distance of 200K (upstream and downstream) from a CTCF binding site have more contacts (interactions/read pairs) with that CTCF binding site.</sub>
 
 The **learned correction parameters** are determined using a model from Yaffe and Tanay, and they will normalize the technical biases while trying to avoid normalizing the biological biases.
 
 Our mapped read pairs can be organized in a format called the contact matrix.
 
 ![Untitled4e5d67cfb0178b41c.png](https://www.pastepic.xyz/images/2018/12/14/Untitled4e5d67cfb0178b41c.png "contact matrix")
-<sub>Figure *: The left shows the general structure of a contact matrix where the rows represent loci (bins) on Chromosome i and the columns represent the loci (bins) on Chromosome j.  The entries of the contact matrix contain the number of contacts between each pair of loci.  The contact matrix can be used to generate a heatmap (example on the right of the the figure), where more contacts between a pair of loci is represented by a more intense color (in this example, white = 0 and red = 5).**borrowed from slides**</sub>
+<sub>Figure 4: The left shows the general structure of a contact matrix where the rows represent loci (bins) on Chromosome i and the columns represent the loci (bins) on Chromosome j.  The entries of the contact matrix contain the number of contacts between each pair of loci.  The contact matrix can be used to generate a heatmap (example on the right of the the figure), where more contacts between a pair of loci is represented by a more intense color (in this example, white = 0 and red = 5).**borrowed from slides**</sub>
 
 **How to calculate normalized data**
 - Observed contact matrix O[i,j]: observed read count b/w loci identified by bins i and j.
@@ -93,7 +93,7 @@ A heatmap and a histogram can be plotted
 <table>
   <tr>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled51f762f1893d848d8.png" "heatmap+histograms" width="800")></td>
-    <td><sub>Figure *: Example of heatmap and histogram visualizations for the Normalized and Observed over Expected contact matrices.</sub></td>
+    <td><sub>Figure 5: Example of heatmap and histogram visualizations for the Normalized and Observed over Expected contact matrices.</sub></td>
   </tr>
 </table>
 <!---
@@ -105,11 +105,7 @@ A heatmap and a histogram can be plotted
 <table>
   <tr>
     <td>**Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).</td>
-    <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="600"/></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><sub>Figure***:</sub></td>
+    <td align="right"><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="600"/><sub>Figure 6:</sub></td>
   </tr>
 </table>
 
