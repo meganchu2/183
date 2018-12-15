@@ -5,8 +5,8 @@
 4. [Data Visualization](#4)
 5. [TAD Analysis and Visualization](#5)
 
-
-## Overview<a name="1"></a>
+<a name="1"></a>
+## Overview
 
 GITAR (Genome Interaction Tools and Resources) is a software to perform a comprehensive Hi-C data analysis.
 
