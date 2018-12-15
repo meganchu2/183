@@ -117,21 +117,24 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 <table>
   <tr>
     <td>
-<b><u>Goal</u></b>: Calculate the coordinates (location) of topologically associated domains (TADs).<br>
-*What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]<Br>
-Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.<br>
-**How to calculate TAD coordinates**<br>
-1. Calculate the Directionality Index (DI)
-  <p>
-  - quantifies degree of upstream or downstream bias of a given bin
-  - DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="200"/>
-  </p>
-2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).
-3. Determine TAD Coordinates
-  <p>
-  - Shifts in true DI between negative and positive determines the TAD boundaries<br>
-  - The TAD boundaries give us the TAD Coordinates
-  </p>
+<b><u>Goal</u></b>: Calculate the coordinates (location) of topologically associated domains (TADs).<br><br>
+
+<i>What are TADs?</i> They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]<br><br>
+
+Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.<br><br>
+
+<b>How to calculate TAD coordinates</b><br>
+1. Calculate the Directionality Index (DI)<br>
+  <p><li>
+  <ul> quantifies degree of upstream or downstream bias of a given bin</ul>
+  <ul> DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="200"/> </ul>
+  </li></p>
+2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).<br>
+3. Determine TAD Coordinates<br>
+  <p><li>
+  <ul> Shifts in true DI between negative and positive determines the TAD boundaries</ul>
+  <ul> The TAD boundaries give us the TAD Coordinates</ul>
+  </li></p>
 </td>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
   </tr>
