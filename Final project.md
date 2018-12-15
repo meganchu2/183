@@ -1,4 +1,4 @@
-﻿# 3.2.2 GITAR Pipeline 
+# 3.2.2 GITAR Pipeline 
 1. [Overview](#1)
 2. [Data Preprocessing](#2)
 3. [Data Normalization](#3)
@@ -110,7 +110,7 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 <table>
   <tr>
     <td>
-**Goal**: Calculate the coordinates (location) of topologically associated domains (TADs).
+<b>Goal</b>: Calculate the coordinates (location) of topologically associated domains (TADs).
 
 *What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]
 
