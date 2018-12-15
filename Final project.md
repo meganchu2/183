@@ -49,15 +49,15 @@ Hi-C data is analyzed and visualized in the following steps:
   </tr>
   <tr>
     <td><b>Problem 1</b>: Hi-C reads have the form depicted by Figure 1; each read pair contains one read for DNA fragment 1 and one read for DNA fragment 2.  However, it is also possible that each read in the read pair contains parts of the ligation site (in theory the ligation site is not a naturally occurring sequence in the genome), and this ligation site sequence would not map to anywhere in the genome.</td>
-    <td><b><i>Solution 1 "Pre-truncation":</i><b> Remove parts of the ligation site sequence contained in the reads (if there are any). [1]</td>
+    <td><b><i>Solution 1 "Pre-truncation"</i></b>: Remove parts of the ligation site sequence contained in the reads (if there are any). [1]</td>
   </tr>
   <tr>
-    <td><b>Problem 2<b>: Any two interacting DNA fragments may be many kilobases away from each other, thus a read pair (one read for each interacting fragment) may not map well to the genome as "one sequence".</td>
-    <td><b><i>Solution 2 "Independent Alignment":</i></b> Map/align each read in the read pair to the genome separately.</td>
+    <td><b>Problem 2</b>: Any two interacting DNA fragments may be many kilobases away from each other, thus a read pair (one read for each interacting fragment) may not map well to the genome as "one sequence".</td>
+    <td><b><i>Solution 2 "Independent Alignment"</i></b>: Map/align each read in the read pair to the genome separately.</td>
   </tr>
   <tr>
-    <td><b>Problem 3<b>: After mapping the reads, we realize it is possible that some reads are unable to be mapped to the genome, some read pairs map to the same DNA fragment (which doesn't make sense since this implies the DNA fragment interacts with itself), or some reads have a very low quality mapping (doesn't really match with the genome sequence it mapped to).</td>
-    <td><b><i>Solution 3 "Filtering Reads":</i><b> Remove read pairs that fall within the same fragment or have MAPQ score (measurement of how "good" the alignment of the read to the genome is) less than a specified threshold.</td>
+    <td><b>Problem 3</b>: After mapping the reads, we realize it is possible that some reads are unable to be mapped to the genome, some read pairs map to the same DNA fragment (which doesn't make sense since this implies the DNA fragment interacts with itself), or some reads have a very low quality mapping (doesn't really match with the genome sequence it mapped to).</td>
+    <td><b><i>Solution 3 "Filtering Reads"</i></b>: Remove read pairs that fall within the same fragment or have MAPQ score (measurement of how "good" the alignment of the read to the genome is) less than a specified threshold.</td>
   </tr>
 </table>
 
@@ -130,17 +130,19 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.<br>
 
 <b>How to calculate TAD coordinates</b><br>
-1. Calculate the Directionality Index (DI)<br>
+<ol>
+<li> Calculate the Directionality Index (DI)</li><br>
   <p><ul>
   <li> quantifies degree of upstream or downstream bias of a given bin</li>
-  <li> DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="200"/> </li>
+  <li> DI formula: <img src="http://pastepic.xyz/images/2018/12/14/ Untitled70cc6753d2bf21933.png" width="200"/> </li>
   </ul></p>
-2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).<br>
-3. Determine TAD Coordinates<br>
+<li> Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).</li><br>
+<li> Determine TAD Coordinates</li><br>
   <p><ul>
   <li> Shifts in true DI between negative and positive determines the TAD boundaries</li>
   <li> The TAD boundaries give us the TAD Coordinates</li>
   </ul></p>
+</ol>
 </td>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
   </tr>
