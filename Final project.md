@@ -5,6 +5,7 @@
 4. [Data Visualization](#4)
 5. [TAD Analysis and Visualization](#5)
 
+
 <a name="1"></a>
 ## Overview
 
@@ -19,7 +20,8 @@ Hi-C data is analyzed and visualized in the following steps:
 - Topologically associated domain (TAD) Analysis and Visualization
 
 
-## Data Preprocessing<a name="2"></a>
+<a name="2"></a>
+## Data Preprocessing
 
 **Goal**: Improve the genome mapping outcome of Hi-C data.
 
@@ -54,7 +56,8 @@ Hi-C data is analyzed and visualized in the following steps:
 	Remove read pairs that fall within the same fragment or have MAPQ score (measurement of how "good" the alignment of the read to the genome is) less than a specified threshold.
 
 
-## Data Normalization<a name="3"></a>
+<a name="3"></a>
+## Data Normalization
 **Goal**: Normalize the data for technical biases while taking into account biologial biases.
 
 *What are technical biases?* Biases in the data due to spurious ligation products, fragment length, GC content, and mappability.
@@ -83,8 +86,11 @@ Our mapped read pairs can be organized in a format called the contact matrix.
 <p align="center">O_over_E[i,j] = O[i,j] / E[i,j]</p>
 
 
-## Data Visualization<a name="4"></a> 
-**Goal**: Give visual representation of interchromosomal and intrachromosomal interactions.
+<a name="4"></a>
+## Data Visualization 
+**<u>Goal</u>**: Give visual representation of interchromosomal and intrachromosomal interactions.
+
+**Types of Visual Representation**
 - Heatmaps show contacts based on data from contact matrices
 - Histograms show distribution of contact frequency
 
@@ -106,24 +112,26 @@ Heatmaps and histograms are generated for the observed, expected, normalized, an
 -->
 
 
-## TAD Analysis and Visualization<a name="5"></a> 
+<a name="5"></a>
+## TAD Analysis and Visualization 
 <table>
   <tr>
     <td>
-<b>Goal</b>: Calculate the coordinates (location) of topologically associated domains (TADs).
-
-*What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]
-
-Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.
-
-**How to calculate TAD coordinates**
-1. Calculate the Directionality Index (DI)<br>
-  - quantifies degree of upstream or downstream bias of a given bin<br>
+<b><u>Goal</u></b>: Calculate the coordinates (location) of topologically associated domains (TADs).<br>
+*What are TADs?* They are highly self-interacting regions at the level of hundreds of kilobases (~10^5 bases) to a few megabases (~10^6 bases).  They are separated by boundaries that prevent interactions with the neighboring regions. [2]<Br>
+Looking at Figure 6 we see at the very top that the chromatin is bunched up into red and black regions (where each "blob" is a TAD).  We see that these regions correspond to the ends of the triangles in Figure 6A, so each triangle corresponds to one TAD.  In Figure 6B, we see that the Directionality index changes sign at the ends of each triangle, thus this sign change marks the boundaries of each TAD.<br>
+**How to calculate TAD coordinates**<br>
+1. Calculate the Directionality Index (DI)
+  <p>
+  - quantifies degree of upstream or downstream bias of a given bin
   - DI formula: <img src="http://pastepic.xyz/images/2018/12/14/Untitled70cc6753d2bf21933.png" width="200"/>
+  </p>
 2. Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).
-3. Determine TAD Coordinates<br>
+3. Determine TAD Coordinates
+  <p>
   - Shifts in true DI between negative and positive determines the TAD boundaries<br>
   - The TAD boundaries give us the TAD Coordinates
+  </p>
 </td>
     <td><img src="https://www.pastepic.xyz/images/2018/12/14/Untitled6f6657b45148d4158.png" width="1000"/><sub>Figure 6: Plot A slices a normalized contact matrix/heatmap along its diagonal and uses this diagonal as the new x-axis.  Each triangle boundary on the heatmap lines up with one of the red/black TADs at the very top of the figure.  Plot B gives us the value of the Directionality Index at each loci in the chromosome, where each time the DI crosses the x-axis lines up with a TAD boundary.</sub></td>
   </tr>
