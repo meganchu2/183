@@ -131,13 +131,13 @@ Looking at Figure 6 we see at the very top that the chromatin is bunched up into
 
 <b>How to calculate TAD coordinates</b><br>
 <ol>
-<li> Calculate the Directionality Index (DI)</li><br>
+<li> Calculate the Directionality Index (DI)</li>
   <p><ul>
   <li> quantifies degree of upstream or downstream bias of a given bin</li>
-  <li> DI formula: <img src="http://pastepic.xyz/images/2018/12/14/ Untitled70cc6753d2bf21933.png" width="200"/> </li>
+  <li> DI formula: <img src="http://pastepic.xyz/images/2018/12/14/ Untitled70cc6753d2bf21933.png" width="150"/> </li>
   </ul></p>
-<li> Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).</li><br>
-<li> Determine TAD Coordinates</li><br>
+<li> Use a Hidden Markov Model (HMM) to determine the underlying biased state for each locus (upstream, downstream or none).</li>
+<li> Determine TAD Coordinates</li>
   <p><ul>
   <li> Shifts in true DI between negative and positive determines the TAD boundaries</li>
   <li> The TAD boundaries give us the TAD Coordinates</li>
